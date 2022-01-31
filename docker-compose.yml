@@ -1,0 +1,51 @@
+version: '3.7'
+
+networks:
+  default:
+
+services:
+  db:
+    image: alexanderweigelt/devbox-db:${IMAGE_TAG}
+    networks:
+      default: { }
+    ports:
+      - ${PORT_MYSQL}:3306
+    volumes:
+      - dbdata:/var/lib/mysql:rw
+    env_file:
+      - .env
+  httpd:
+    image: alexanderweigelt/devbox-httpd:${IMAGE_TAG}
+    networks:
+      default: { }
+    ports:
+      - ${PORT_HTTP}:80
+    volumes:
+      - ${COMPOSE_PROJECT_ROOT}:${HTTP_PROJECT_ROOT}:rw
+    env_file:
+      - .env
+  php:
+    image: alexanderweigelt/devbox-php:${IMAGE_TAG}
+    networks:
+      default: { }
+    volumes:
+      - ${COMPOSE_PROJECT_ROOT}:${HTTP_PROJECT_ROOT}:rw
+    env_file:
+      - .env
+  toolbox:
+    image: alexanderweigelt/devbox-toolbox:${IMAGE_TAG}
+    networks:
+      default: { }
+    ports:
+      - ${PORT_SSH}:22
+    volumes:
+      - ${COMPOSE_PROJECT_ROOT}:${HTTP_PROJECT_ROOT}:rw
+    depends_on:
+      - php
+      - db
+    env_file:
+      - .env
+
+volumes:
+  dbdata:
+    driver: local
