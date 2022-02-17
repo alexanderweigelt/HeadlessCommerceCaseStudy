@@ -12,7 +12,6 @@ services:
     ports:
       - ${PORT_MYSQL}:3306
     volumes:
-      - ./docker/db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
       - dbdata:/var/lib/mysql:rw
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/mysql:rw
