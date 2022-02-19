@@ -333,7 +333,7 @@
         },
         "files": [
             "config/packages/twig.yaml",
-            "templates/base.html.twig"
+            "admin/base.html.twig"
         ]
     },
     "symfony/validator": {

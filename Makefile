@@ -12,8 +12,6 @@ ifeq (run,$(firstword $(MAKECMDGOALS)))
   $(eval $(RUN_ARGS):;@:)
 endif
 
-IP=$$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
-
 # Documentation
 default:
 	@echo "\n\
@@ -52,9 +50,10 @@ bash: .env
 
 install: .env
 	@echo "\033[1;92m Install the required packages and start the sample data migrations\033[0m\n"
-	@docker-compose exec toolbox bash -c "composer install && bin/console doctrine:migrations:migrate --no-interaction"
+	@docker-compose up -d toolbox
+	@docker-compose exec toolbox bash -c "composer install && bin/console doctrine:migrations:migrate --no-interaction && npm install $(STOREFRONT_ROOT)"
 
 mysql: .env
 	@docker-compose exec db bash
 
-.PHONY: up run down bash migrate mysql
+.PHONY: pull up run down bash install mysql

@@ -1,6 +1,6 @@
 # Headless eCommerce - Category Page CaseStudy
 
-A case study for  headless eCommerce Store Frontend with Symfony and Vue.js
+> A case study for headless eCommerce Store Frontend with Symfony and Vue.js
 
 ## Dependencies
 
@@ -19,10 +19,11 @@ The docker environment is based on https://github.com/alexanderweigelt/DockerDev
 
     **Note:** The command does not start containers based on those images.
 
-3. `make up` to start the environment for the first time.
-4. `make install` Installs the required packages, migrates the database schema and inserts sample data.
+3. `make install` Installs the required packages, migrates the database schema and inserts sample data.
     
     **Note:** Install the data when all setup processes in the container are finished. Check this with `docker-compose logs -f`
+
+4. `make up` to start the environment for the first time.
 
 ### Daily work
 

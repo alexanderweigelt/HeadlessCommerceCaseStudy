@@ -1,5 +1,20 @@
 .DS_Store
+
+# Editor directories and files
 .idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+###> vuejs/vue ###
+storefront/node_modules/
+storefront/dist/
+storefront/npm-debug.log*
+storefront/yarn-debug.log*
+storefront/yarn-error.log*
+###< vuejs/vue ###
 
 ###> symfony/framework-bundle ###
 /.env
@@ -12,4 +27,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
+# Lock files
 /composer.lock
+/storefront/package-lock.json

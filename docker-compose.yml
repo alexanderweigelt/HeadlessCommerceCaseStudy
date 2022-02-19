@@ -1,14 +1,15 @@
 version: '3.7'
 
 networks:
-  default:
+  frontend:
+  backend:
 
 services:
 ###> alexanderweigelt/devbox-db ###
   db:
     image: alexanderweigelt/devbox-db:${IMAGE_TAG}
     networks:
-      default: { }
+      backend: { }
     ports:
       - ${PORT_MYSQL}:3306
     volumes:
@@ -23,7 +24,7 @@ services:
   httpd:
     image: alexanderweigelt/devbox-httpd:${IMAGE_TAG}
     networks:
-      default: { }
+      backend: { }
     ports:
       - ${PORT_HTTP}:80
     volumes:
@@ -36,7 +37,7 @@ services:
   php:
     image: alexanderweigelt/devbox-php:${IMAGE_TAG}
     networks:
-      default: { }
+      backend: { }
     volumes:
       - ${COMPOSE_PROJECT_ROOT}:${HTTP_PROJECT_ROOT}:rw
     env_file:
@@ -47,7 +48,7 @@ services:
   toolbox:
     image: alexanderweigelt/devbox-toolbox:${IMAGE_TAG}
     networks:
-      default: { }
+      backend: { }
     ports:
       - ${PORT_SSH}:22
     volumes:
@@ -58,6 +59,22 @@ services:
     env_file:
       - .env
 ###< alexanderweigelt/devbox-toolbox ###
+
+###> nodejs/docker-node  ###
+  storefront:
+    image: node:17
+    networks:
+      frontend: { }
+    ports:
+      - ${PORT_NODE}:${PORT_NODE}
+    volumes:
+      - ${STOREFRONT_ROOT}:/home/node/app
+    user: "node"
+    working_dir: /home/node/app
+    command: "npm run dev"
+    env_file:
+      - .env
+###< nodejs/docker-node ###
 
 volumes:
   dbdata:
