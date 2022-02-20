@@ -3,12 +3,14 @@
 # Fallstudie
 
 Am Beispiel eine Kategorieseite soll untersucht werden, ob eine Umstellung auf ein Headless E-Commerce technisch machbar 
-wäre. Dabei sind folgende Punkte wichtig:
+und sinnvoll wäre. Dabei sind folgende Punkte wichtig:
 
 * Clientseitiges oder serverseitiges Rendering?
 * Welche API-Architektur soll zum Einsatz kommen?
 * Wäre das Javascript Framework geeignet?
-* Ist eine Umstellung auf ein Headless E-Commerce grundlegend sinnvoll?
+* Suchmaschinenoptimierung (SEO)?
+* Nutzerfreundlichkeit/Nutzererfahrung (UI/UX)?
+* Ist eine Umstellung auf ein Headless E-Commerce grundlegend sinnvoll (Aufwand gegen Nutzen)?
 
 ## Der Fall
 
@@ -18,7 +20,7 @@ Der Betreiber einer E-Commerce-Plattform plant in seinem System die technische T
 Um dies zu erreichen, soll eine Neuauflage des Shopsystem erfolgen, wobei auf ein sogenanntes Headless E-Commerce-System
 umgestellt wird.
 
-**Was versteht amn unter Headless E-Commerce?**
+**Was versteht man unter Headless E-Commerce?**
 
 "Headless E-Commerce" ist ein E-Commerce-System, bei dem das Backend, in dem Bestellungen und Zahlungen verarbeitet und 
 Daten gespeichert werden, von der Benutzeroberfläche technisch getrennt ist. Auf der Benutzeroberfläche interagiert der 
@@ -33,6 +35,10 @@ _zu definieren_
 
 _zu definieren_
 
+## Fazit
+
+_zu definieren_
+
 ---
 
 # Case study
@@ -43,7 +49,9 @@ possible. The following points are important:
 * Client-side or server-side rendering?
 * Which API architecture should be used?
 * Which Javascript framework?
-* Is a switch to headless e-commerce useful?
+* Search Engine Optimisation (SEO)?
+* User interface/user experience (UI/UX)?
+* Is a switch to headless e-commerce useful (effort vs. benefit)?
 
 ## The case
 
@@ -63,6 +71,10 @@ an order. Both systems can each be an independent application. They interact wit
 _to be defined_
 
 ## Analysis
+
+_to be defined_
+
+## Summary
 
 _to be defined_
 

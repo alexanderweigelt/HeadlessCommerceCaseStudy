@@ -2,7 +2,7 @@
 
 > A case study for a headless e-commerce shop frontend, using a category page as an example.
 
-Read the complete case study [hier](./docs/CaseStudy.md)
+Read the complete case study [here](./docs/CaseStudy.md)
 
 ## The e-commerce store frontend example
 
@@ -28,6 +28,18 @@ The docker environment is based on https://github.com/alexanderweigelt/DockerDev
     **Note:** Install the data when all setup processes in the container are finished. Check this with `docker-compose logs -f`
 
 4. `make up` to start the environment for the first time.
+
+### Usage
+
+After installing and starting the application, call:
+* API [http://localhost/api/](http://localhost/api/)
+* Frontend (headless storefront) [http://localhost:8080/](http://localhost:8080/)
+
+    Read [more](./storefront/README.md)
+
+**Note:** Use custom settings in the .env file for the ports _PORT_NODE_ and _PORT_HTTP_
+
+---
 
 ## Author
 

@@ -1,5 +1,6 @@
-# Storefront
+# Headless storefront
 
+The frontend based on [Vue.js](https://vuejs.org/), [webpack](http://vuejs-templates.github.io/webpack/) and [vue-loader](http://vuejs.github.io/vue-loader).
 
 ## Build Setup
 
@@ -17,4 +18,8 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+---
+
+## Author
+
+* [Alexander Weigelt](mailto:webdesign@alexander-weigelt.de)
