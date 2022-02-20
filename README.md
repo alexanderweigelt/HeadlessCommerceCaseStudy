@@ -1,18 +1,22 @@
-# Headless eCommerce - Category Page CaseStudy
+# Case study for headless e-commerce
 
-> A case study for headless eCommerce Store Frontend with Symfony and Vue.js
+> A case study for a headless e-commerce shop frontend, using a category page as an example.
 
-## Dependencies
+Read the complete case study [hier](./docs/CaseStudy.md)
+
+## The e-commerce store frontend example
+
+### Dependencies
 
 To use the environment with Docker:
 -   Install docker: https://docs.docker.com/engine/installation/
 
-## Getting Started
+### Getting Started
 
 The easiest way to start the application is to use the Docker environment. 
 The docker environment is based on https://github.com/alexanderweigelt/DockerDevbox
 
-### First time
+#### First steps
 
 1. `cp .env.dist .env` and adjust application settings in the .env file.
 2. `make pull` to pull all image associated with a services defined in the docker-compose.yml file. 
@@ -24,11 +28,6 @@ The docker environment is based on https://github.com/alexanderweigelt/DockerDev
     **Note:** Install the data when all setup processes in the container are finished. Check this with `docker-compose logs -f`
 
 4. `make up` to start the environment for the first time.
-
-### Daily work
-
-1. `make up` to **start** the application.
-2. `make down` to **stop** the application.
 
 ## Author
 
