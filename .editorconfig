@@ -10,11 +10,6 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
-[*.{js,ts,json,yml}]
-# Change these settings to your own preference
-indent_size = 2
-tab_width = 2
-
 # We recommend you to keep these unchanged
 end_of_line = lf
 charset = utf-8

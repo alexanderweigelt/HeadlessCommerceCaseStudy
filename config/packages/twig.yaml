@@ -1,5 +1,5 @@
 twig:
-    default_path: '%kernel.project_dir%/admin'
+    default_path: '%kernel.project_dir%/storefront'
 
 when@test:
     twig:

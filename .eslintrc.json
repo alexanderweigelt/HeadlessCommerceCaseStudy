@@ -1,0 +1,37 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "plugins": [
+        "react"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2016
+    },
+    "rules": {
+        "max-len": [
+            1,
+            120,
+            2,
+            {
+                "ignoreComments": true
+            }
+        ],
+        "no-console": "warn",
+        "no-undef": "warn",
+        "object-curly-spacing": ["error", "always"]
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    }
+}

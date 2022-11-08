@@ -51,7 +51,7 @@ bash: .env
 install: .env
 	@echo "\033[1;92m Install the required packages and start the sample data migrations\033[0m\n"
 	@docker-compose up -d toolbox
-	@docker-compose exec toolbox bash -c "composer install && bin/console doctrine:migrations:migrate --no-interaction && npm install $(STOREFRONT_ROOT)"
+	@docker-compose exec toolbox bash -c "composer install --optimize-autoloader && npm install"
 
 mysql: .env
 	@docker-compose exec db bash
