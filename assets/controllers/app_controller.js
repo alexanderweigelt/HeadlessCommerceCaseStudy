@@ -1,7 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
 import { Controller } from '@hotwired/stimulus';
-import { App } from "../javascript/ui/app"
+import { App } from "../javascript/app"
 
 /*
  * This is the App Stimulus controller!
@@ -16,7 +17,9 @@ export default class extends Controller {
     connect() {
         this.root.render(
             <React.StrictMode>
-                <App />
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
             </React.StrictMode>
         );
     }
