@@ -6,14 +6,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ApiResource(order: ['lastName' => 'ASC'], formats: ['json'], paginationEnabled: false)]
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
-#[ApiResource(
-    attributes: [
-        'order' => ['lastName' => 'ASC']
-    ],
-    formats: ['json'],
-    paginationEnabled: false
-)]
 class Customer
 {
     #[ORM\Id]
@@ -43,7 +37,6 @@ class Customer
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -55,7 +48,6 @@ class Customer
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
-
         return $this;
     }
 
@@ -67,7 +59,6 @@ class Customer
     public function setEmailAddress(string $emailAddress): self
     {
         $this->emailAddress = $emailAddress;
-
         return $this;
     }
 }

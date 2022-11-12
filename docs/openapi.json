@@ -12,99 +12,7 @@
     }
   ],
   "paths": {
-    "/api/categories": {
-      "get": {
-        "operationId": "getCategoryCollection",
-        "tags": [
-          "Category"
-        ],
-        "responses": {
-          "200": {
-            "description": "Category collection",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Category"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "summary": "Retrieves the collection of Category resources.",
-        "description": "Retrieves the collection of Category resources.",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "description": "The collection page number",
-            "required": false,
-            "deprecated": false,
-            "allowEmptyValue": true,
-            "schema": {
-              "type": "integer",
-              "default": 1
-            },
-            "style": "form",
-            "explode": false,
-            "allowReserved": false
-          }
-        ],
-        "deprecated": false
-      },
-      "post": {
-        "operationId": "postCategoryCollection",
-        "tags": [
-          "Category"
-        ],
-        "responses": {
-          "201": {
-            "description": "Category resource created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Category"
-                }
-              }
-            },
-            "links": {
-              "GetCategoryItem": {
-                "operationId": "getCategoryItem",
-                "parameters": {
-                  "id": "$response.body#/id"
-                },
-                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/categories/{id}`."
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid input"
-          },
-          "422": {
-            "description": "Unprocessable entity"
-          }
-        },
-        "summary": "Creates a Category resource.",
-        "description": "Creates a Category resource.",
-        "parameters": [],
-        "requestBody": {
-          "description": "The new Category resource",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Category"
-              }
-            }
-          },
-          "required": true
-        },
-        "deprecated": false
-      },
-      "parameters": []
-    },
-    "/api/categories/{id}": {
+    "/api/categories/{slug}": {
       "get": {
         "operationId": "getCategoryItem",
         "tags": [
@@ -129,7 +37,7 @@
         "description": "Retrieves a Category resource.",
         "parameters": [
           {
-            "name": "id",
+            "name": "slug",
             "in": "path",
             "description": "Resource identifier",
             "required": true,
@@ -164,9 +72,9 @@
               "GetCategoryItem": {
                 "operationId": "getCategoryItem",
                 "parameters": {
-                  "id": "$response.body#/id"
+                  "slug": "$response.body#/slug"
                 },
-                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/categories/{id}`."
+                "description": "The `slug` value returned in the response can be used as the `slug` parameter in `GET /api/categories/{slug}`."
               }
             }
           },
@@ -184,7 +92,7 @@
         "description": "Replaces the Category resource.",
         "parameters": [
           {
-            "name": "id",
+            "name": "slug",
             "in": "path",
             "description": "Resource identifier",
             "required": true,
@@ -228,7 +136,7 @@
         "description": "Removes the Category resource.",
         "parameters": [
           {
-            "name": "id",
+            "name": "slug",
             "in": "path",
             "description": "Resource identifier",
             "required": true,
@@ -263,9 +171,9 @@
               "GetCategoryItem": {
                 "operationId": "getCategoryItem",
                 "parameters": {
-                  "id": "$response.body#/id"
+                  "slug": "$response.body#/slug"
                 },
-                "description": "The `id` value returned in the response can be used as the `id` parameter in `GET /api/categories/{id}`."
+                "description": "The `slug` value returned in the response can be used as the `slug` parameter in `GET /api/categories/{slug}`."
               }
             }
           },
@@ -283,7 +191,7 @@
         "description": "Updates the Category resource.",
         "parameters": [
           {
-            "name": "id",
+            "name": "slug",
             "in": "path",
             "description": "Resource identifier",
             "required": true,
@@ -621,18 +529,34 @@
         "description": "Retrieves the collection of Product resources.",
         "parameters": [
           {
-            "name": "page",
+            "name": "categories",
             "in": "query",
-            "description": "The collection page number",
+            "description": "",
             "required": false,
             "deprecated": false,
             "allowEmptyValue": true,
             "schema": {
-              "type": "integer",
-              "default": 1
+              "type": "string"
             },
             "style": "form",
             "explode": false,
+            "allowReserved": false
+          },
+          {
+            "name": "categories[]",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
             "allowReserved": false
           }
         ],
@@ -917,11 +841,11 @@
           "slug": {
             "type": "string"
           },
-          "products": {
+          "productsData": {
+            "readOnly": true,
             "type": "array",
             "items": {
-              "type": "string",
-              "format": "iri-reference"
+              "type": "string"
             }
           }
         }

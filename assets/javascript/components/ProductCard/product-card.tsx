@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactElement, FC } from 'react';
 import { Product } from '../../entity/Product';
 import { Button, Card } from "react-bootstrap";
 
@@ -9,7 +9,7 @@ export type ProductCardProps = {
     data: Product
 }
 
-export const ProductCard: FC<ProductCardProps> = ({ data }) => {
+export const ProductCard: FC<ProductCardProps> = ({ data }): ReactElement => {
     return (
         <Card className={'shadow-sm'}>
             <svg className="bd-placeholder-img card-img-top" width="100%" height="225"

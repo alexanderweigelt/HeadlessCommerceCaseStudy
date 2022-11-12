@@ -13,7 +13,8 @@ export interface DeleteProductItemRequest {
 }
 
 export interface GetProductCollectionRequest {
-    page?: number;
+    category?: string;
+    categories?: Array<string>;
 }
 
 export interface GetProductItemRequest {
@@ -71,8 +72,11 @@ export class ProductApi extends BaseAPI {
         requestParameters: GetProductCollectionRequest
     ): Promise<ApiResponse<Array<Product>>> {
         const queryParameters: any = {};
-        if (requestParameters.page !== undefined) {
-            queryParameters['page'] = requestParameters.page;
+        if (requestParameters.category !== undefined) {
+            queryParameters['categories'] = requestParameters.category;
+        }
+        if (requestParameters.categories) {
+            queryParameters['categories[]'] = requestParameters.categories;
         }
         const headerParameters: HTTPHeaders = {};
         const response = await this.request({
@@ -87,9 +91,7 @@ export class ProductApi extends BaseAPI {
     /**
      * Retrieves the collection of Product resources.
      */
-    public async getProductCollection(
-        requestParameters: GetProductCollectionRequest = {}
-    ): Promise<Array<Product>> {
+    public async getProductCollection(requestParameters: GetProductCollectionRequest = {}): Promise<Array<Product>> {
         const response = await this.getProductCollectionRaw(requestParameters);
         return await response.value();
     }
@@ -188,9 +190,7 @@ export class ProductApi extends BaseAPI {
     /**
      * Creates a Product resource.
      */
-    public async postProductCollection(
-        requestParameters: PostProductCollectionRequest
-    ): Promise<Product> {
+    public async postProductCollection(requestParameters: PostProductCollectionRequest): Promise<Product> {
         const response = await this.postProductCollectionRaw(requestParameters);
         return await response.value();
     }
@@ -231,5 +231,4 @@ export class ProductApi extends BaseAPI {
         const response = await this.putProductItemRaw(requestParameters);
         return await response.value();
     }
-
 }

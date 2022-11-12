@@ -9,28 +9,20 @@ import type { Category } from "../../entity/Category";
 import { CategoryFromJSON, CategoryToJSON } from "../../entity/Category";
 
 export interface DeleteCategoryItemRequest {
-    id: string;
-}
-
-export interface GetCategoryCollectionRequest {
-    page?: number;
+    slug: string;
 }
 
 export interface GetCategoryItemRequest {
-    id: string;
+    slug: string;
 }
 
 export interface PatchCategoryItemRequest {
-    id: string;
-    category: Category;
-}
-
-export interface PostCategoryCollectionRequest {
+    slug: string;
     category: Category;
 }
 
 export interface PutCategoryItemRequest {
-    id: string;
+    slug: string;
     category: Category;
 }
 
@@ -40,16 +32,16 @@ export class CategoryApi extends BaseAPI {
      * Removes the Category resource.
      */
     private async deleteCategoryItemRaw(requestParameters: DeleteCategoryItemRequest): Promise<ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new RequiredError(
-                'id',
-                'Required parameter requestParameters.id was null or undefined when calling deleteCategoryItem.'
+                'slug',
+                'Required parameter requestParameters.slug was null or undefined when calling deleteCategoryItem.'
             );
         }
         const queryParameters: any = {};
         const headerParameters: HTTPHeaders = {};
         const response = await this.request({
-            path: `/api/categories/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/categories/{slug}`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -65,49 +57,19 @@ export class CategoryApi extends BaseAPI {
     }
 
     /**
-     * Retrieves the collection of Category resources.
-     */
-    private async getCategoryCollectionRaw(
-        requestParameters: GetCategoryCollectionRequest
-    ): Promise<ApiResponse<Array<Category>>> {
-        const queryParameters: any = {};
-        if (requestParameters.page !== undefined) {
-            queryParameters['page'] = requestParameters.page;
-        }
-        const headerParameters: HTTPHeaders = {};
-        const response = await this.request({
-            path: `/api/categories`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        });
-        return new JSONApiResponse(response, (jsonValue) => jsonValue.map(CategoryFromJSON));
-    }
-
-    /**
-     * Retrieves the collection of Category resources.
-     */
-    public async getCategoryCollection(
-        requestParameters: GetCategoryCollectionRequest = {}
-    ): Promise<Array<Category>> {
-        const response = await this.getCategoryCollectionRaw(requestParameters);
-        return await response.value();
-    }
-
-    /**
      * Retrieves a Category resource.
      */
     private async getCategoryItemRaw(requestParameters: GetCategoryItemRequest): Promise<ApiResponse<Category>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new RequiredError(
-                'id',
-                'Required parameter requestParameters.id was null or undefined when calling getCategoryItem.'
+                'slug',
+                'Required parameter requestParameters.slug was null or undefined when calling getCategoryItem.'
             );
         }
         const queryParameters: any = {};
         const headerParameters: HTTPHeaders = {};
         const response = await this.request({
-            path: `/api/categories/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/categories/{slug}`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -127,10 +89,10 @@ export class CategoryApi extends BaseAPI {
      * Updates the Category resource.
      */
     private async patchCategoryItemRaw(requestParameters: PatchCategoryItemRequest): Promise<ApiResponse<Category>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new RequiredError(
-                'id',
-                'Required parameter requestParameters.id was null or undefined when calling patchCategoryItem.'
+                'slug',
+                'Required parameter requestParameters.slug was null or undefined when calling patchCategoryItem.'
             );
         }
         if (requestParameters.category === null || requestParameters.category === undefined) {
@@ -143,7 +105,7 @@ export class CategoryApi extends BaseAPI {
         const headerParameters: HTTPHeaders = {};
         headerParameters['Content-Type'] = 'application/merge-patch+json';
         const response = await this.request({
-            path: `/api/categories/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/categories/{slug}`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -161,50 +123,13 @@ export class CategoryApi extends BaseAPI {
     }
 
     /**
-     * Creates a Category resource.
-     */
-    private async postCategoryCollectionRaw(
-        requestParameters: PostCategoryCollectionRequest
-    ): Promise<ApiResponse<Category>> {
-        if (requestParameters.category === null || requestParameters.category === undefined) {
-            throw new RequiredError(
-                'category',
-                'Required param requestParameters.category was null or undefined when calling postCategoryCollection.'
-            );
-        }
-        const queryParameters: any = {};
-        const headerParameters: HTTPHeaders = {};
-        headerParameters['Content-Type'] = 'application/json';
-        const response = await this.request({
-            path: `/api/categories`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CategoryToJSON(requestParameters.category),
-        });
-        return new JSONApiResponse(response, (jsonValue) => CategoryFromJSON(jsonValue));
-    }
-
-    /**
-     * Creates a Category resource.
-     */
-    public async postCategoryCollection(
-        requestParameters: PostCategoryCollectionRequest
-    ): Promise<Category> {
-        const response = await this.postCategoryCollectionRaw(requestParameters);
-        return await response.value();
-    }
-
-    /**
      * Replaces the Category resource.
      */
-    private async putCategoryItemRaw(
-        requestParameters: PutCategoryItemRequest
-    ): Promise<ApiResponse<Category>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
+    private async putCategoryItemRaw(requestParameters: PutCategoryItemRequest): Promise<ApiResponse<Category>> {
+        if (requestParameters.slug === null || requestParameters.slug === undefined) {
             throw new RequiredError(
-                'id',
-                'Required parameter requestParameters.id was null or undefined when calling putCategoryItem.'
+                'slug',
+                'Required parameter requestParameters.slug was null or undefined when calling putCategoryItem.'
             );
         }
         if (requestParameters.category === null || requestParameters.category === undefined) {
@@ -217,7 +142,7 @@ export class CategoryApi extends BaseAPI {
         const headerParameters: HTTPHeaders = {};
         headerParameters['Content-Type'] = 'application/json';
         const response = await this.request({
-            path: `/api/categories/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/categories/{slug}`.replace(`{${"slug"}}`, encodeURIComponent(String(requestParameters.slug))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,

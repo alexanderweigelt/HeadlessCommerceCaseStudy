@@ -5,7 +5,6 @@ All URIs are relative to *http://localhost*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**deleteProductItem**](category-api.docs.md#deleteProductItem) | **DELETE** /api/products/{id} | Removes the Product resource. |
-| [**getProductCollection**](category-api.docs.md#getProductCollection) | **GET** /api/products | Retrieves the collection of Product resources. |
 | [**getProductItem**](category-api.docs.md#getProductItem) | **GET** /api/products/{id} | Retrieves a Product resource. |
 | [**patchProductItem**](category-api.docs.md#patchProductItem) | **PATCH** /api/products/{id} | Updates the Product resource. |
 | [**postProductCollection**](category-api.docs.md#postProductCollection) | **POST** /api/products | Creates a Product resource. |
@@ -22,9 +21,9 @@ Removes the Product resource.
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Resource identifier | [default to null] |
+| Name   | Type       | Description         | Notes             |
+|--------|------------|---------------------|-------------------|
+| **id** | **String** | Resource identifier | [default to null] |
 
 ### Return type
 
@@ -41,7 +40,7 @@ No authorization required
 
 <a name="getProductCollection"></a>
 # **getProductCollection**
-> List getProductCollection(page)
+> List getProductCollection(category, categories\[\])
 
 Retrieves the collection of Product resources.
 
@@ -49,9 +48,10 @@ Retrieves the collection of Product resources.
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **page** | **Integer**| The collection page number | [optional] [default to 1] |
+| Name               | Type                                             | Description | Notes                        |
+|--------------------|--------------------------------------------------|-------------|------------------------------|
+| **category**       | **String**                                       |             | [optional] [default to null] |
+| **categories\[\]** | [**List**](../../entity/Product/product.docs.md) |             | [optional] [default to null] |
 
 ### Return type
 
@@ -76,9 +76,9 @@ Retrieves a Product resource.
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Resource identifier | [default to null] |
+| Name   | Type       | Description         | Notes             |
+|--------|------------|---------------------|-------------------|
+| **id** | **String** | Resource identifier | [default to null] |
 
 ### Return type
 
@@ -103,10 +103,10 @@ Updates the Product resource.
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Resource identifier | [default to null] |
-| **Product** | [**Product**](../../entity/Product/product.docs.md)| The updated Product resource | |
+| Name        | Type                                                | Description                  | Notes             |
+|-------------|-----------------------------------------------------|------------------------------|-------------------|
+| **id**      | **String**                                          | Resource identifier          | [default to null] |
+| **Product** | [**Product**](../../entity/Product/product.docs.md) | The updated Product resource |                   |
 
 ### Return type
 
@@ -131,9 +131,9 @@ Creates a Product resource.
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **Product** | [**Product**](../../entity/Product/product.docs.md)| The new Product resource | |
+| Name        | Type                                                | Description              | Notes |
+|-------------|-----------------------------------------------------|--------------------------|-------|
+| **Product** | [**Product**](../../entity/Product/product.docs.md) | The new Product resource |       |
 
 ### Return type
 
@@ -158,10 +158,10 @@ Replaces the Product resource.
 
 ### Parameters
 
-|Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **id** | **String**| Resource identifier | [default to null] |
-| **Product** | [**Product**](../../entity/Product/product.docs.md)| The updated Product resource | |
+| Name        | Type                                                | Description                  | Notes             |
+|-------------|-----------------------------------------------------|------------------------------|-------------------|
+| **id**      | **String**                                          | Resource identifier          | [default to null] |
+| **Product** | [**Product**](../../entity/Product/product.docs.md) | The updated Product resource |                   |
 
 ### Return type
 
@@ -175,4 +175,3 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json
-

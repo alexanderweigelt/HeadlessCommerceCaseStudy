@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Heading } from "../../components/Headings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLanguage } from "@fortawesome/free-solid-svg-icons"
 import { Accordion } from "react-bootstrap";
 
-export const Home = () => {
+export const Home = (): ReactElement => {
     return (
         <>
             <Heading element={'h1'}>

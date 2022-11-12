@@ -1,21 +1,16 @@
-import React, { FC } from 'react';
-import { Product } from '../../entity/Product';
+import React, { ReactElement, useContext } from 'react';
 import { ProductCard } from "../ProductCard";
 import { Row, Col } from "react-bootstrap";
+import { ProductContext } from "../../context/Product";
 
-export type ProductListProps = {
-    /**
-     * a list of products
-     */
-    list: Product[];
-} & React.HTMLAttributes<HTMLDivElement>;
+export const ProductList = (): ReactElement => {
+    const [products] = useContext(ProductContext);
 
-export const ProductList: FC<ProductListProps> = ({ list }) => {
     return (
         <>
-            {list.length > 0 ? (
+            {products.length > 0 ? (
                 <Row>
-                    {list.map((product, index) => (
+                    {products.map((product, index) => (
                         <Col xs={12} md={3} key={index}>
                             <ProductCard key={index} data={product}/>
                         </Col>

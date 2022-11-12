@@ -148,6 +148,11 @@ final class Version20220217162343 extends AbstractMigration
                 'title' => 'Tanks',
                 'description' => 'Tanks category - Look for example articles for tanks',
                 'slug' => 'tanks'
+            ],
+            [
+                'title' => 'Shoes',
+                'description' => 'Shoes category - Look for example articles for shoes',
+                'slug' => 'shoes'
             ]
         ];
 
@@ -415,7 +420,107 @@ final class Version20220217162343 extends AbstractMigration
                 'categories' => [
                     2, 8
                 ]
-            ]
+            ],
+            [
+                'name' => 'Fjallraven - Outdoor shirt',
+                'description' => 'Your perfect shirt for everyday use and walks in the forest',
+                'slug' => 'fjallraven-outdoor-shirt',
+                'sku' => 26,
+                'price' => 109.95,
+                'categories' => [
+                    6,
+                ],
+            ],
+            [
+                'name' => 'Mens Casual Premium Slim Fit Shirt',
+                'description' => 'Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans.',
+                'slug' => 'mens-casual-premium-slim-fit-shirts',
+                'sku' => 27,
+                'price' => 22.3,
+                'categories' => [
+                    6,
+                ],
+            ],
+            [
+                'name' => 'Mens Cotton Shirt',
+                'description' => 'Great outerwear shirt for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors.',
+                'slug' => 'mens-cotton-shirt',
+                'sku' => 28,
+                'price' => 55.99,
+                'categories' => [
+                    6,
+                ],
+            ],
+            [
+                'name' => 'Mens Casual Slim Fit',
+                'description' => 'The optimal leisure wear. The color could be slightly different between on the screen and in practice',
+                'slug' => 'mens-casual-slim-fit',
+                'sku' => 29,
+                'price' => 15.99,
+                'categories' => [
+                    6,
+                ],
+            ],
+            [
+                'name' => 'BIYLACLESEN Snowboard Top',
+                'description' => 'Buy the new BIYLACLESEN Snowboard Top. It is suitable for different season and help you adapt to different climates',
+                'slug' => 'biylaclesen-snowboard-top',
+                'sku' => 30,
+                'price' => 56.99,
+                'categories' => [
+                    2,
+                ],
+            ],
+            [
+                'name' => 'Strong Woman Tank',
+                'description' => 'Lightweight perfekt for trip or casual wear',
+                'slug' => 'strong-woman-tank',
+                'sku' => 31,
+                'price' => 39.99,
+                'categories' => [
+                    2, 8
+                ],
+            ],
+            [
+                'name' => 'MBJ Solid Short Sleeve Boat Neck V Shirt',
+                'description' => 'Buy the new MBJ Solid Short Sleeve Boat Neck V Shirt',
+                'slug' => 'mbj-solid-short-sleeve-boat-neck-v-shirt',
+                'sku' => 32,
+                'price' => 9.85,
+                'categories' => [
+                    6, 2
+                ],
+            ],
+            [
+                'name' => 'Opna Tank Short Sleeve',
+                'description' => '100% Polyester, Machine wash, 100% cationic polyester interlock, Machine Wash & Pre Shrunk for a Great Fit, Lightweight, roomy and highly breathable with moisture wicking fabric which helps to keep moisture away, Soft Lightweight Fabric with comfortable V-neck collar and a slimmer fit, delivers a sleek, more feminine silhouette and Added Comfort',
+                'slug' => 'opna-tank-short-sleeve',
+                'sku' => 33,
+                'price' => 7.95,
+                'categories' => [
+                    2, 8
+                ],
+            ],
+            [
+                'name' => 'DANVOUY Cotton Shorts',
+                'description' => '95% Cotton,5% Spandex, Features: Casual, Short Sleeve, Letter Print, V-Neck, Fashion Tees, The fabric is soft and has some stretch. Season: Spring, Summer, Autumn, Winter.',
+                'slug' => 'danvouy-cotton-shorts',
+                'sku' => 34,
+                'price' => 12.99,
+                'categories' => [
+                    7,
+                ],
+            ],
+            [
+                'name' => 'Sylva Sport Shoes',
+                'description' => 'Buy the new Sylva Sport Shoes',
+                'slug' => 'sylva-sport-shoes',
+                'sku' => 35,
+                'price' => 47.99,
+                'categories' => [
+                    9,
+                ],
+            ],
         ];
 
         foreach ($products as $product) {

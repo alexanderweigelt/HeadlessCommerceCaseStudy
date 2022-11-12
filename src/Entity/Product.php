@@ -3,15 +3,16 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ApiResource(formats: ['json'], paginationEnabled: false)]
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ApiResource(
-    formats: ['json']
-)]
+#[ApiFilter(SearchFilter::class, properties: ['categories' => 'exact'])]
 class Product
 {
     #[ORM\Id]
@@ -55,7 +56,6 @@ class Product
     public function setName(string $name): self
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -67,7 +67,6 @@ class Product
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -79,7 +78,6 @@ class Product
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
         return $this;
     }
 
@@ -91,7 +89,6 @@ class Product
     public function setSku(int $sku): self
     {
         $this->sku = $sku;
-
         return $this;
     }
 
@@ -103,7 +100,6 @@ class Product
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
         return $this;
     }
 
@@ -121,7 +117,6 @@ class Product
             $this->categories[] = $category;
             $category->addProduct($this);
         }
-
         return $this;
     }
 
@@ -130,7 +125,6 @@ class Product
         if ($this->categories->removeElement($category)) {
             $category->removeProduct($this);
         }
-
         return $this;
     }
 }

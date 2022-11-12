@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
-export const NoMatch = () => {
+export const NoMatch = (): ReactElement => {
     return (
         <>404 not found</>
     )

@@ -1,4 +1,5 @@
 import { exists } from "../../api/runtime";
+import { Product } from "../Product";
 
 /**
  *
@@ -32,10 +33,10 @@ export interface Category {
     slug?: string;
     /**
      *
-     * @type {Array<string>}
+     * @type {Product[] | Array<string>}
      * @memberof Category
      */
-    products?: Array<string>;
+    readonly productsData: Product[];
 }
 
 export function CategoryFromJSON(json: any): Category {
@@ -47,7 +48,7 @@ export function CategoryFromJSON(json: any): Category {
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'slug': !exists(json, 'slug') ? undefined : json['slug'],
-        'products': !exists(json, 'products') ? undefined : json['products'],
+        'productsData': !exists(json, 'productsData') ? undefined : json['productsData'],
     };
 }
 
@@ -62,7 +63,5 @@ export function CategoryToJSON(value?: Category | null): any {
         'title': value.title,
         'description': value.description,
         'slug': value.slug,
-        'products': value.products,
     };
 }
-

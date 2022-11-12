@@ -1,7 +1,6 @@
-import React from "react";
-import type { RouteObject } from "react-router-dom";
-import { Outlet, useRoutes, useNavigate } from "react-router-dom";
-import { Category } from "./routes/Category";
+import React, { ReactElement } from "react";
+import { RouterProvider, Outlet, createBrowserRouter, useNavigate } from "react-router-dom";
+import { Category, categoryLoader } from "./routes/Category";
 import { Home } from "./routes/Home";
 import { NoMatch } from "./routes/NoMatch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,33 +9,9 @@ import { faCopyright } from "@fortawesome/free-regular-svg-icons"
 import { faSquareGithub, faSquareXing, faSquareFacebook } from "@fortawesome/free-brands-svg-icons"
 import { NavDropdown, Container, Nav, Navbar, Form, Col } from "react-bootstrap";
 import classNames from "classnames";
+import { ProductProvider } from "./context/Product";
 
-export const App = () => {
-    let routes: RouteObject[] = [
-        {
-            path: "/",
-            element: <Layout/>,
-            children: [
-                { index: true, element: <Home/> },
-                {
-                    path: "/category/:id",
-                    element: <Category/>
-                },
-                { path: "*", element: <NoMatch/> },
-            ],
-        },
-    ];
-
-    let element = useRoutes(routes);
-
-    return (
-        <div className={'container-fluid'}>
-            {element}
-        </div>
-    );
-}
-
-const Layout = () => {
+const Layout = (): ReactElement => {
     const navigate = useNavigate();
 
     function handleClick(path: string) {
@@ -56,12 +31,37 @@ const Layout = () => {
                             <Nav className={'me-auto'}>
                                 <Nav.Link onClick={() => handleClick('/')}>Home</Nav.Link>
                                 <NavDropdown title="Categories" id="basic-nav-dropdown">
-                                    {/** ToDo: load category collection from API /api/categories */}
-                                    <NavDropdown.Item onClick={() => handleClick('/category/1')}>
+                                    {/** I decided not to generate the navigation dynamically from the categories (API).
+                                     Reason: the shop owner may not want to show all categories in the menu.
+                                     Furthermore, it is not possible to determine the order from the result of the API
+                                     in a meaningful way. It is better to provide the data in a different way, like a
+                                     navigation API. */}
+                                    <NavDropdown.Item onClick={() => handleClick('/category/headgear')}>
                                         Headgear
                                     </NavDropdown.Item>
-                                    <NavDropdown.Item onClick={() => handleClick('/category/2')}>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/tops')}>
                                         Tops
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/bottoms')}>
+                                        Bottoms
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/caps')}>
+                                        Caps
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/pants')}>
+                                        Pants
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/shirts')}>
+                                        Shirts
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/shorts')}>
+                                        Shorts
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/tanks')}>
+                                        Tanks
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleClick('/category/shoes')}>
+                                        Shoes
                                     </NavDropdown.Item>
                                 </NavDropdown>
                             </Nav>
@@ -106,4 +106,28 @@ const Layout = () => {
             </footer>
         </div>
     );
+}
+
+let router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout/>,
+        children: [
+            { index: true, element: <Home/> },
+            {
+                path: "/category/:slug",
+                element:
+                    <ProductProvider>
+                        <Category/>
+                    </ProductProvider>,
+                loader: categoryLoader,
+                errorElement: <NoMatch/>
+            },
+            { path: "*", element: <NoMatch/> },
+        ],
+    }
+]);
+
+export const App = (): ReactElement => {
+    return <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />;
 }
